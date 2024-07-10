@@ -1,0 +1,5 @@
+org\jetbrains\annotations\NotNull.class
+com\example\RedeemPlugin$1.class
+com\example\RedeemPlugin.class
+org\jetbrains\annotations\Nullable.class
+com\example\RedeemPlugin$RedeemCommandExecutor.class

@@ -1,0 +1,10 @@
+errors:
+  no_permission: "&d&lINFO &7: &dYou do not have permission to use this command."
+  incorrect_usage: "&d&lINFO &7: &dIncorrect usage! Correct usage: /redeem <code>"
+  invalid_code: "&d&lINFO &7: &dInvalid code!"
+  code_used: "&d&lINFO &7: &dThis code has already been used!"
+help:
+  header: "&d&lREDEEM PLUGIN HELP"
+  usage: "&d/redeem <code> &7: &dAllows you to earn points with a code."
+success:
+  redeemed: "&d&lINFO &dCongratulations! You earned %points% points."
