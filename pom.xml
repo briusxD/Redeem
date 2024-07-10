@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com</groupId>
+    <artifactId>Redeem</artifactId>
+    <version>1.0[1.20x]</version>
+    <packaging>jar</packaging>
+
+    <name>Redeem</name>
+
+    <properties>
+        <java.version>22.0.1</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <build>
+        <plugins>
+            <!-- Maven Compiler Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>9</source>
+                    <target>9</target>
+                </configuration>
+            </plugin>
+
+            <!-- Maven Shade Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.2.4</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <filters>
+                                <filter>
+                                    <artifact>org.black_ixx:playerpoints</artifact>
+                                    <excludes>
+                                        <exclude>META-INF.versions.9.module-info</exclude>
+                                        <exclude>META-INF/maven/org.slf4j/slf4j-api/pom.properties</exclude>
+                                        <exclude>META-INF/maven/org.slf4j/slf4j-api/pom.xml</exclude>
+                                    </excludes>
+                                </filter>
+                                <filter>
+                                    <artifact>>maven-shade-plugin</artifact>
+                                    <excludes>
+                                        <exclude>META-INF.versions.9.module-info</exclude>
+                                        <exclude>META-INF/LICENSE.txt</exclude>
+                                        <exclude>META-INF/maven/org.slf4j/slf4j-api/pom.properties</exclude>
+                                        <exclude>META-INF/maven/org.slf4j/slf4j-api/pom.xml</exclude>
+                                        <exclude>META-INF/maven/com.zaxxer/HikariCP/pom.properties</exclude>
+                                        <exclude>META-INF/maven/com.zaxxer/HikariCP/pom.xml</exclude>
+                                        <exclude>META-INF/maven/org.slf4j/slf4j-nop/pom.properties</exclude>
+                                        <exclude>META-INF/maven/org.slf4j/slf4j-nop/pom.xml</exclude>
+                                        <exclude>META-INF/services/org.slf4j.spi.SLF4JServiceProvider</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
+                            <relocations>
+                                <relocation>
+                                    <pattern>org.slf4j</pattern>
+                                    <shadedPattern>com.shaded.slf4j</shadedPattern>
+                                </relocation>
+                            </relocations>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+
+        <!-- Resources -->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+    </build>
+
+    <!-- Repositories -->
+    <repositories>
+        <repository>
+            <id>spigotmc-repo</id>
+            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+        </repository>
+        <repository>
+            <id>sonatype</id>
+            <url>https://oss.sonatype.org/content/groups/public/</url>
+        </repository>
+        <repository>
+            <id>rosewood-repo</id>
+            <url>https://repo.rosewooddev.io/repository/public</url>
+        </repository>
+    </repositories>
+
+    <!-- Dependencies -->
+    <dependencies>
+        <!-- Spigot API Dependency -->
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-api</artifactId>
+            <version>1.20.6-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- PlayerPoints Dependency -->
+        <dependency>
+            <groupId>org.black_ixx</groupId>
+            <artifactId>playerpoints</artifactId>
+            <version>3.2.7</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+</project>
